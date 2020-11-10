@@ -16,8 +16,8 @@ const wallet = new ethers.Wallet(
 );
 
 const event_filter = contract.filters.NumSet();
-contract.on(event_filter, (a, b, c, d, e, f, g) => {
-  consola.info("event NumSet", { a, b, c, d, e, f, g });
+contract.on(event_filter, (old_value, new_value, timestamp, actor, txr) => {
+  consola.info("event NumSet", { old_value, new_value, timestamp, actor, txr });
 });
 
 (async () => {
