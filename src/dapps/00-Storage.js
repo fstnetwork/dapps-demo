@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const consola = require("consola");
 
 const ethers = require("ethers");
@@ -10,10 +12,7 @@ const contract_address = "0xB574cde9be3079f3e379833Fd6502d7434728E15";
 
 const contract = new ethers.Contract(contract_address, abi, provider);
 
-const wallet = new ethers.Wallet(
-  "0x3dbef63d01cb65ccf1c2d142e15cfbdacb83e3bd241eabd540843a1dbccc2822",
-  provider
-);
+const wallet = new ethers.Wallet(process.env.SIGNER_PK, provider);
 
 const event_filter = contract.filters.NumSet();
 contract.on(event_filter, (old_value, new_value, timestamp, actor, txr) => {

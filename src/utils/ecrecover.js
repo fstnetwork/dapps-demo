@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const consola = require("consola");
 
 const ethers = require("ethers");
@@ -12,7 +14,7 @@ consola.info(hash_hello_world);
 consola.info(hash_你好世界);
 
 // do not use in other places, only for testing
-const pk = "0x3dbef63d01cb65ccf1c2d142e15cfbdacb83e3bd241eabd540843a1dbccc2822";
+const pk = process.env.SIGNER_PK;
 
 // create the signing key instance
 const signing_key = new utils.SigningKey(pk);
